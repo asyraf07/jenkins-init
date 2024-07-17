@@ -9,14 +9,14 @@ pipeline {
         stage('Test') {
             steps {
                 script{
-                    sh './mvnw test'
+                    sh 'mvn clean test'
                 }
             }
         }
         stage('Build project') {
             steps {
                 script {
-                    sh './mvnw package'
+                    sh 'mvn clean package'
                     sh 'docker build -t asyraf07/book .'
                     sh 'docker push asyraf07/book'
                 }
