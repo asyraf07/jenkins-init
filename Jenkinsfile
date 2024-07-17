@@ -6,6 +6,13 @@ pipeline {
                 git url: "https://github.com/polyglot-devs/todo-api"
             }
         }
+        stage('Test') {
+            steps {
+                script{
+                    sh './mvnw test'
+                }
+            }
+        }
         stage('Build project') {
             steps {
                 script {
