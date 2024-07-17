@@ -1,9 +1,18 @@
 pipeline {
-    agent { docker { image 'maven:3.9.8-eclipse-temurin-21-alpine' } }
+    agent any
     stages {
-        stage('build') {
+        stage('Clone repository') {
             steps {
-                sh 'mvn --version'
+                git url: "https://github.com/polyglot-devs/todo-api"
+            }
+        }
+        stage('Build project') {
+            steps {
+                script {
+                    sh './mvnw package'
+                    sh 'docker build -t asyraf07/book .'
+                    sh 'docker push asyraf07/book'
+                }
             }
         }
     }
