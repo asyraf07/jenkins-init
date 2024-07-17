@@ -6,7 +6,7 @@ pipeline {
     stages {
         stage('Clone repository') {
             steps {
-                git url: "https://github.com/polyglot-devs/todo-api"
+                git url: "https://github.com/polyglot-devs/todo-api.git"
             }
         }
         stage('Test') {
