@@ -11,14 +11,14 @@ pipeline {
         }
         stage('Test') {
             steps {
-                dir('$WORKSPACE/todo-api') {
+                dir('todo-api') {
                     sh 'mvn clean test'
                 }
             }
         }
         stage('Build project') {
             steps {
-                dir('$WORKSPACE/todo-api') {
+                dir('todo-api') {
                     script {
                         sh 'mvn clean package'
                         sh 'docker build -t asyraf07/book .'
