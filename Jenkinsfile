@@ -22,6 +22,7 @@ pipeline {
                 dir('todo-api') {
                     script {
                         sh 'mvn clean package'
+                        sh 'chmod +x ./mvnw'
                         sh 'docker build -t asyraf07/book .'
                         sh 'docker push asyraf07/book'
                     }
