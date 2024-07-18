@@ -6,7 +6,7 @@ pipeline {
     stages {
         stage('Clone repository') {
             steps {
-                git : "https://github.com/polyglot-devs/todo-api.git"
+                git(url: 'https://github.com/polyglot-devs/todo-api.git', branch: 'main')
                 //sh 'rm -rf todo-api'
                 //sh 'git clone https://github.com/polyglot-devs/todo-api.git'
             }
