@@ -35,7 +35,7 @@ pipeline {
                         //sh 'docker build -t asyraf07/book .'
                         //sh 'docker push asyraf07/book'
                         docker.build("asyraf07/book")
-                        docker.withRegistry("asyraf07/book", "dhub") {
+                        docker.withRegistry("https://hub.docker.com/r/asyraf07/book", "dhub") {
                             docker.image("asyraf07/book").push()
                         }
                     }
