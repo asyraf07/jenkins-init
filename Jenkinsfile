@@ -24,8 +24,20 @@ pipeline {
                     script {
                         sh 'mvn clean package'
                         sh 'chmod +x ./mvnw'
-                        sh 'docker build -t asyraf07/book .'
-                        sh 'docker push asyraf07/book'
+                    }
+                }
+            }
+        }
+        stage('Build image') {
+            steps {
+                dir('todo-api') {
+                    script {
+                        //sh 'docker build -t asyraf07/book .'
+                        //sh 'docker push asyraf07/book'
+                        docker.build("asyraf07/book")
+                        docker.withRegistry("asyraf07/book", "${env.dhub}") {
+                            docker.image("asyraf07/book").push()
+                        }
                     }
                 }
             }
