@@ -44,8 +44,10 @@ pipeline {
         }
         stage('Deploy') {
             steps {
-                docker.image("asyraf07/book").withRun('-p 7777:8080') {
-                    sh 'echo "====== IS RUNNING ======"'
+                script {
+                    docker.image("asyraf07/book").withRun('-p 7777:8080') {
+                        sh 'echo "====== IS RUNNING ======"'
+                    }
                 }
             }
         }
